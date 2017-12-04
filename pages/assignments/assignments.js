@@ -16,19 +16,20 @@ Page({
 
 
   onLoad: function (options) {
-    // this.checkFetchAssignments()
-    this.fetchAssignments()
+    this.checkFetchAssignments()
+    // this.fetchAssignments()
   },
-  // checkFetchAssignments: function () {
-  //   var openId = app.globalData.open_id
-  //   var that = this
-  //   if(typeof openId === 'undefined'){
-  //     return setTimeout(function(){
-  //       that.checkFetchAssignments()
-  //     }, 1000)
-  //     return this.fetchAssignments()
-  //   }
-  // },
+  checkFetchAssignments: function () {
+    var openId = app.globalData.open_id
+    var that = this
+    if(typeof openId === 'undefined'){
+      return setTimeout(function(){
+        console.log('no open id yet?')
+        that.checkFetchAssignments()
+      }, 1000)
+    }
+    return this.fetchAssignments()
+  },
   fetchAssignments: function(){
     var that = this
     // var endpoint = 'https://english-go.herokuapp.com/api/v1/assignments'
