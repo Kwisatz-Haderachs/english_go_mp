@@ -1,0 +1,24 @@
+/* pages/teacher_student_register/teacher_student_register.wxss */
+
+.assignments {
+  padding: 0;
+}
+.heading {
+  text-align: center;
+  margin: 100px; 
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  /* Import Avenir Next  */
+}
+
+.weui-btn {
+  margin: 10px;
+  width: 200px;
+  border-radius: 5px;
+  border: 1px solid #868686;
+  height: 50px; 
+}
+
+#color {
+  background-color: firebrick;
+}

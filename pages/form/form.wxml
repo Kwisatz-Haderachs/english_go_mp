@@ -1,0 +1,47 @@
+<!--  This page will be dynamic. It will change depending on if the user is logged in as a teacher or as a student.  -->
+
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title">Assignment(Title)</view>
+  </view>
+  <view class="page__bd page__bd_spacing">
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        <view class="placeholder">(dynamic box to show assignments)
+        <text>{{content}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view>
+
+    <text>{{voice}}</text>
+
+  </view>
+  <view>
+  <button bindtap="startRecording">Start</button>
+  <button bindtap="stopRecording">Stop</button>
+  <button bindtap="playRecording">Play</button>
+  <button bindtap="playRecording">Save</button>
+  <button bindtap="bindSubmission">Submit</button>
+  </view>
+  <view>
+    <text>Tap to hear your student's answer</text>
+  </view>
+  <view>
+    <button class="weui-btn" type="primary">speaker</button>
+  </view>
+  <view>
+    <text>Tap to give your feedback</text>
+  </view>
+  <view>
+    <button class="weui-btn" type="primary">mic</button>
+  </view>
+  <view class="page__bd page__bd_spacing">
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        <view class="placeholder">(Enter mispronounced words and call API for IPA)</view>
+      </view>
+    </view>
+  </view>
+</view>

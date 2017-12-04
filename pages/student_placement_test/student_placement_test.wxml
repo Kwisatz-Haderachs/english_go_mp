@@ -1,0 +1,37 @@
+<!--pages/student_placement_test/student_placement_test.wxml-->
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title">Assignment(Title)</view>
+  </view>
+  <view class="page__bd page__bd_spacing">
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        <view class="placeholder">(Mutliple choice test)
+        <text>{{assign.content}}</text>
+        </view>
+      </view>
+    </view> 
+  </view>  
+  <view>
+    <text>A sample answer</text>
+    <!-- This will call content from the db -->
+    <text>{{assign.voice}}</text>
+  </view>
+  <view>
+  <button bindtap="startRecording">Start</button>
+  <button bindtap="stopRecording">Stop</button>
+  <button bindtap="playRecording">Play</button>
+  <button bindtap="playRecording">Save</button>
+  </view>  
+  <view>
+    <text>Tap below to record</text>
+  </view>
+  <view>
+    <button class="weui-btn" type="primary">mic icon</button>
+  </view>  
+  <view class="page__bd page__bd_spacing">
+    <button class="btn" type="primary">Submit</button>
+  </view>
+</view>
+
+

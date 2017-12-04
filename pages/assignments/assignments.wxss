@@ -1,0 +1,28 @@
+/* pages/assignments/assignments.wxss */
+.assignments {
+  padding: 0;
+}
+.heading {
+  text-align: center;
+  margin: 70px; 
+  font-size: 45px;
+  font-family: Arial, Helvetica, sans-serif;
+  /* Import Avenir Next  */
+}
+
+.weui-btn {
+  margin: 10px;
+  width: 200px;
+  border-radius: 5px;
+  border: 1px solid #868686;
+  height: 50px; 
+}
+
+#color {
+  background-color: firebrick;
+}
+
+/* Rectangle 3: */
+/* background: #1CAE32;
+
+border-radius: 8px; */

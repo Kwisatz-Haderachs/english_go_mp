@@ -1,0 +1,13 @@
+<!--pages/student_pre_test/student_pre_test.wxml-->
+<text>Thank you for applying!
+We’ll get back to you in 
+less than 24 hours to
+confirm a time to chat.
+
+In the meantime, take a 
+look at this link to find out 
+more about teaching with
+EnglishGo!</text>
+<view>
+  <text>(EnglishGo77 Logo will go here)</text>
+</view>

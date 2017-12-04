@@ -1,0 +1,15 @@
+<!--pages/teacher_post_register/teacher_post_register.wxml-->
+<text>Thank you for applying!
+We’ll get back to you in 
+less than 24 hours with
+the results of your test.
+
+In the meantime, take a 
+look at this link to find out 
+more about studying with
+EnglishGo!</text>
+<view>
+    <text> (EnglishGo77 label will 
+    go below)</text>
+</view>
+

@@ -1,0 +1,32 @@
+.placeholder{
+    margin: 5px;
+    padding: 0 10px;
+    text-align: center;
+    background-color: #EBEBEB;
+    height: 2.3em;
+    line-height: 2.3em;
+    color: #cfcfcf;
+}
+
+.placeholder {
+  display: flex;
+  height: 300px;
+}
+
+.page__title {
+  display: flex;
+  justify-content: center;
+}
+
+.weui-btn {
+ /*center the button  */
+ /* add the mic icon  */
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  margin: 35px;
+}
+
+.weui-flex__item {
+  margin: 50px;
+}

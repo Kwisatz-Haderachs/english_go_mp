@@ -1,0 +1,23 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/landing_page/landing_page",
+    "pages/student_post_placement_test/student_post_placement_test",
+    "pages/student_placement_test/student_placement_test",
+    "pages/teacher_dashboard/teacher_dashboard",
+    "pages/form/form",
+    "pages/student_pre_test/student_pre_test",
+    "pages/teacher_registration_submission_form/teacher_registration_submission_form",
+    "pages/teacher_student_select/teacher_student_select",
+    "pages/components_1/buttons",
+    "pages/logs/logs",
+    "pages/teacher_post_register/teacher_post_register",
+    "pages/assignments/assignments"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  }
+}

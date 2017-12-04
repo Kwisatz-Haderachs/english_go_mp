@@ -1,0 +1,45 @@
+<view class="assignments container">
+<block wx:for="{{assignments}}" wx:key="index" wx:for-item="assignment">
+  <button bindtap="handleCardTap" data-id="{{assignment.id}}"> <view class="assignment-cards" data-id="{{assignment.id}} data-lesson_id={{assignment.lesson_id}}">{{assignment.voice}}</view></button>
+</block>
+<!--   <text class="heading">Assignments</text>
+
+  <view class="page__bd page__bd_spacing">
+          <button class="weui-btn" type="primary">Motivation
+          </button>
+  </view>
+  <view class="page__bd page__bd_spacing">
+          <button class="weui-btn" type="primary">Challenges</button>
+  </view>
+  <view class="page__bd page__bd_spacing">
+          <button class="weui-btn" type="primary" id='color'>Leisure</button>
+  </view>
+  <view class="page__bd page__bd_spacing">
+          <button class="weui-btn" type="primary" disabled="true">Childhood</button>
+  </view>
+  <view class="page__bd page__bd_spacing">
+          <button class="weui-btn" type="primary" disabled="true">Friendship</button>
+  </view>
+  <view class="page__bd page__bd_spacing">
+          <button class="weui-btn" type="primary" disabled="true">Sports</button>
+  </view>
+  <view class="page__bd page__bd_spacing">
+          <button class="weui-btn" type="primary" disabled="true">Education</button>
+  </view>
+  <view class="page__bd page__bd_spacing">
+          <button class="weui-btn" type="primary" disabled="true">Fitness</button>
+  </view>
+  <view class="page__bd page__bd_spacing">
+          <button class="weui-btn" type="primary" disabled="true">Traveling</button>
+  </view>
+  <view class="page__bd page__bd_spacing">
+          <button class="weui-btn" type="primary" disabled="true">Movies</button>
+  </view>
+  <view class="page__bd page__bd_spacing">
+          <button class="weui-btn" type="primary" disabled="true">Food</button>
+  </view>
+  <view class="page__bd page__bd_spacing">
+          <button class="weui-btn" type="primary" disabled="true">Family</button>
+  </view> -->
+</view>
+

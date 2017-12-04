@@ -1,0 +1,37 @@
+/* pages/teacher_registration_submission_form/teacher_registration_submission_form.wxss */
+
+.space {
+  margin: 30px;
+}
+
+.placeholder{
+    margin: 5px;
+    padding: 0 10px;
+    text-align: center;
+    background-color: #EBEBEB;
+    height: 2.3em;
+    line-height: 2.3em;
+    color: #cfcfcf;
+}
+
+.placeholder {
+  display: flex;
+  height: 300px;
+}
+
+.page__title {
+  display: flex;
+  justify-content: center;
+}
+
+.weui-btn {
+  margin: 10px;
+  width: 200px;
+  border-radius: 5px;
+  border: 1px solid #868686;
+  height: 50px; 
+}
+
+.weui-flex__item {
+  margin: 50px;
+}

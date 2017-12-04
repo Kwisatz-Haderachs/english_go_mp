@@ -1,0 +1,57 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+
+/*This is above the border where we will have EnglishGo  */
+
+  /* Background: 
+background-image: linear-gradient(0deg, #2C2D31 1%, #101013 100%);
+/* Fill : */
+/* background: #FFFFFF; */
+/* Label: */
+/* font-family: PingFangSC-Regular;
+font-size: 32px;
+color: #FFFFFF;
+letter-spacing: 0; */
+/* Rectangle : */
+/* background: #FFFFFF; */
+/* Label: */
+/* font-family: PingFangSC-Medium;
+font-size: 37px;
+color: #FFFFFF;
+letter-spacing: 0; */
+/* Background: */
+/* background: rgba(0,0,0,0.00); */
+/* Battery: */
+/* border: 1px solid #FFFFFF;
+border-radius: 3px; */
+/* Charge: */
+/* background: #FFFFFF;
+border-radius: 1px; */
+/* +: */
+/* background: #FFFFFF; */
+/* 100%: */
+/* font-family: .SFNSDisplay;
+font-size: 24px;
+color: #FFFFFF; */
+/* Wifi: */
+/* background: #FFFFFF; */
+/* WeChat: */
+/* font-family: .SFNSDisplay;
+font-size: 23px;
+color: #FFFFFF;
+letter-spacing: -0.8px;
+ Signal:  */
+/* background: #FFFFFF; */
+/* Label: */
+/* font-family: .SFNSDisplay;
+font-size: 24px;
+color: #FFFFFF;
+letter-spacing: 0;   */

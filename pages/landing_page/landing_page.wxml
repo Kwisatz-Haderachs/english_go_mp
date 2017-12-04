@@ -1,0 +1,8 @@
+<!--pages/landing_page/landing_page.wxml-->
+<view class="assignments container">
+  <text class="heading">EnglishGo77</text>
+  <view class="page__bd page__bd_spacing">
+    <button class="weui-btn" type="primary">Let's Go!</button>
+  </view>
+</view>
+
