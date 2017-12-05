@@ -22,7 +22,6 @@
   <button bindtap="startRecording">Start</button>
   <button bindtap="stopRecording">Stop</button>
   <button bindtap="playRecording">Play</button>
-  <button bindtap="playRecording">Save</button>
   <button bindtap="bindSubmission">Submit</button>
   </view>
   <view>

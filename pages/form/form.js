@@ -1,6 +1,16 @@
+const qiniuUploader = require("../../utils/qiniuUploader.js");
+
+function initQiniu() {
+  var options = {
+    region: 'ECN',
+    uptoken: 'PJP0bjvUkPBLO3PmSgAfuVyEh9aTAlzYmiItmRCm:u5s-CgIKhJmnCACo4a62kbX2zqQ=:eyJzY29wZSI6ImVuZ2xpc2hnbzp0ZXN0aW5nYWdhaW4ucG5nIiwiZGVhZGxpbmUiOjE1MTI1NDMzODAsInVwaG9zdHMiOlsiaHR0cDovL3VwLnFpbml1LmNvbSIsImh0dHA6Ly91cGxvYWQucWluaXUuY29tIiwiLUggdXAucWluaXUuY29tIGh0dHA6Ly8xODMuMTMxLjcuMTgiXSwiZ2xvYmFsIjpmYWxzZX0=',
+    domain: 'http://englishgo.bkt.clouddn.com',
+    shouldUseQiniuFileName: false
+  };
+  qiniuUploader.init(options);
+}
+
 var filePath;
-// const AV = require('../../utils/av-weapp-min.js');
-// const Form = require('../../model/form.js');
 var app = getApp()
 
 Page({
@@ -9,17 +19,18 @@ Page({
     content: null,
     voice: null,
     lesson: null,
+    recording_path: null,
     userInfo: {}
   },
 
   startRecording: function () {
+    var that = this
     wx.startRecord({
       success: function (res) {
-        var tempFilePath = res.tempFilePath
-        wx.playVoice({
-          filePath: tempFilePath
+        that.setData({
+          recording_path: res.tempFilePath
         })
-
+        console.log(that.data.recording_path)
         setTimeout(function () {
           wx.pauseVoice()
         }, 200000)
@@ -31,20 +42,59 @@ Page({
   },
   playRecording: function () {
     wx.playVoice({
-      filePath: filePath,
+      filePath: that.data.recording_path,
       complete: function () {
       }
     })
   },
 
+  uploadVoice: function() {
+    var that = this
+    var filePath = that.data.recording_path
+
+    qiniuUploader.upload(filePath, (res) => {
+      console.log("I'm here!!!!!!!!");
+
+      console.log(res);
+      that.setData({
+        'recording': res.key
+      });
+    }, (error) => {
+      console.error('error: ' + JSON.stringify(error));
+    });
+
+  },
+
+  // downloadVoice: function (){
+  //   wx.downloadFile({
+  //   url: 'https://example.com/audio/123', //仅为示例，并非真实的资源
+  //   success: function(res) {
+
+  //       if (res.statusCode === 200) {
+  //           wx.playVoice({
+  //             filePath: res.tempFilePath
+  //         })
+  //       }
+  //     }
+  //   })
+  // },
   onLoad: function (options) {
+    initQiniu();
+    console.log(options)
     var that = this
     var id = options.assignment
-    var lessonId = options.lesson
-    var endpoint = 'http://localhost:3000/api/v1/assignments/1'// `https://english-go.herokuapp.com/api/v1/assignments/${id}`
+    that.setData({
+      lesson_id: options.lesson
+    })
+    var openId = app.globalData.open_id
+    var authToken = app.globalData.authentication_token
+    var endpoint = `http://localhost:3000/api/v1/assignments/${id}` // `https://english-go.herokuapp.com/api/v1/assignments/${id}`
     wx.request({
       url: endpoint,
-      header: { 'content-type': 'application/json' },
+      data: {
+        user_open_id: openId,
+        user_token: authToken
+      },
       success: function (res) {
         // res contains all the HTTP request data
         console.log('success!' + res.statusCode);
@@ -66,41 +116,15 @@ Page({
       }
     })
   },
-  //上传录音
-  uploadVoice: function(){
-    var that = this
-    wx.uploadVoice({
-        localId: voice.localId, // 需要上传的音频的本地ID，由stopRecord接口获得
-        isShowProgressTips: 1, // 默认为1，显示进度提示
-        success: function (res) {
-            //把录音在微信服务器上的id（res.serverId）发送到自己的服务器供下载
-            filePath = res.tempFilePaths[0];
-            qiniuUploader.upload(filePath, (res) => {
-              that.setData({
-                voice : res.voice,
-              });
-            })
-          }
-        }
-    );
-    //注册微信播放录音结束事件【一定要放在wx.ready函数内】
-    wx.onVoicePlayEnd({
-      success: function (res) {
-          stopWave();
-      }
-    })
-  },
-
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  },
 
   bindSubmission: function(event){
+    var that = this
+    //  var assignmentId = that.assignment
+    var lessonId = that.data.lesson_id
+    var openId = app.globalData.open_id
+    var authToken = app.globalData.authentication_token
+
+    that.uploadVoice()
 
     this.setData({
       loading: !this.data.loading
@@ -110,12 +134,12 @@ Page({
       method: 'POST',
       url: 'http://localhost:3000/api/v1/submissions', // 'https://english-go.herokuapp.com/api/v1/submissions',
       data: {
-        lesson: {
-          student_id: 2, //their open_id
-          assignment_id: 1, //passed in when access form
-          teacher_id: 1, // all teacher 1 for now
-          voice: "F me",
-          content: "Seriously!"
+        user_open_id: openId,
+        user_token: authToken,
+        lesson_id: lessonId,
+        submission: {
+          voice: 'temp',
+          content: "Good!"
         }
       },
       success: function (response){
@@ -140,4 +164,3 @@ Page({
     })
   }
 })
-

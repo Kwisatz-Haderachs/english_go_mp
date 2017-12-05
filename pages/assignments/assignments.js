@@ -1,6 +1,3 @@
-// pages/assignments/assignments.js
-// const AV = require('../../utils/av-weapp-min.js');
-// const Form = require('../../model/form.js');
 var app = getApp()
 Page({
 
@@ -34,11 +31,15 @@ Page({
     var that = this
     // var endpoint = 'https://english-go.herokuapp.com/api/v1/assignments'
     var openId = app.globalData.open_id
+    var authToken = app.globalData.authentication_token
     console.log('loading assignments')
     var endpoint = 'http://localhost:3000/api/v1/assignments'
     wx.request({
       url: endpoint,
-      data: {open_id: openId},
+      data: {
+        user_open_id: openId,
+        user_token: authToken
+      },
       success: function (res) {
         // res contains all the HTTP request data
         console.log('success!' + res.statusCode);
@@ -65,7 +66,7 @@ Page({
     let id = event.currentTarget.dataset.id
     if (!lessonId) {
       console.log('Hasn\'t started the assignment yet, creating one')
-      this.postNewLesson()
+      this.postNewLesson(id)
     } else {
       console.log('Student already started or finished, directly navigating to the page')
       wx.navigateTo({
@@ -74,20 +75,24 @@ Page({
     }
   },
   postNewLesson: function (assignmentId) {
+    console.log(assignmentId)
+    var openId = app.globalData.open_id
+    var authToken = app.globalData.authentication_token
     wx.request({
       method: 'POST',
       url: 'http://localhost:3000/api/v1/lessons', // change to Heroku when ready
       data: {
+        user_open_id: openId,
+        user_token: authToken,
         lesson: {
-          student_id: 2, //their open_id
-          assignment_id: assignmentId,
-          teacher_id: 1
+          assignment_id: assignmentId
         }
       },
       success: function (response){
         let res = response.data;
         var lessonId = res.id
         var assignmentId = res.assignment_id
+        console.log(response.data)
         wx.navigateTo({
           url: `../form/form?assignment=${assignmentId}&lesson=${lessonId}`
         })
@@ -119,17 +124,4 @@ Page({
   onUnload: function () {
 
   },
-
-
-  onPullDownRefresh: function () {
-
-  },
-
-  onReachBottom: function () {
-
-  },
-
-  onShareAppMessage: function () {
-
-  }
 })

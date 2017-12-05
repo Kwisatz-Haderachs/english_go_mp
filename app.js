@@ -1,6 +1,4 @@
 //app.js
-// const AV = require('utils/av-weapp-min.js');
-const Form = require('model/form.js');
 
 App({
   onLaunch: function () {
@@ -25,7 +23,24 @@ App({
          }
       })
   },
-
+  getUserInfo:function(cb){
+    var that = this;
+    if(this.globalData.userInfo){
+      typeof cb == "function" && cb(this.globalData.userInfo)
+    }else{
+      //调用登录接口
+      wx.login({
+        success: function () {
+          wx.getUserInfo({
+            success: function (res) {
+              that.globalData.userInfo = res.userInfo;
+              typeof cb == "function" && cb(that.globalData.userInfo)
+            }
+          })
+        }
+      });
+    }
+  },
   sendCodeToBackend: function (code, res) {
     var that = this
     wx.request({
@@ -36,6 +51,7 @@ App({
         console.log('done with sendCodeToBackend')
         that.globalData.open_id = res.data.open_id
         that.globalData.username = res.data.username
+        that.globalData.authentication_token = res.data.authentication_token
         console.log(that.globalData)
 
       },
